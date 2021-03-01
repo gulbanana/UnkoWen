@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Sprite)), RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Sprite)), RequireComponent(typeof(Collider2D))]
 public class Button : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private SpriteRenderer sprite;
