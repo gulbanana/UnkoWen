@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class Zoomer : MonoBehaviour
 {
     public float zoomSpeed = 10f;
+    public float maxPanX = 5f;
+    public float maxPanY = 2.5f;
 
     private new Camera camera;
     private Controls controls;
@@ -62,7 +64,9 @@ public class Zoomer : MonoBehaviour
 
             var worldDelta = lastWorldPosition - worldPosition;
 
-            camera.transform.position = camera.transform.position + worldDelta;
+            var newPosition = camera.transform.position + worldDelta;
+            
+            camera.transform.position = new Vector3(Mathf.Clamp(newPosition.x, -maxPanX, maxPanX), Mathf.Clamp(newPosition.y, -maxPanY, maxPanY), camera.transform.position.z);
         }
 
         lastScreenPosition = screenPosition;
