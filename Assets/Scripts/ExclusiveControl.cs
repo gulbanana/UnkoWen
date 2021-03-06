@@ -1,17 +1,26 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ExclusiveControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public CameraPanner panner;
+    public CameraPanner disabledPanner;
+    public Image hiddenScrollbar;
+
+    public void Start()
+    {
+        hiddenScrollbar.enabled = false;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        panner.enabled = false;
+        disabledPanner.enabled = false;
+        hiddenScrollbar.enabled = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        panner.enabled = true;
+        disabledPanner.enabled = true;
+        hiddenScrollbar.enabled = false;
     }
 }
