@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,19 +6,28 @@ public class ExclusiveControl : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     public CameraPanner disabledPanner;
     public Image hiddenScrollbar;
-    private bool pointerWithin;
+    private bool disablePanningLater;
 
     public void Start()
     {
         hiddenScrollbar.enabled = false;
     }
 
+    public void Update()
+    {
+        if (disablePanningLater && !disabledPanner.panning)
+        {
+            disablePanningLater = false;
+            disabledPanner.enabled = false;
+            hiddenScrollbar.enabled = true;
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        pointerWithin = true;
         if (disabledPanner.panning)
         {
-            StartCoroutine(DisablePanningLater());
+            disablePanningLater = true;
         }
         else
         {
@@ -30,22 +38,8 @@ public class ExclusiveControl : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        pointerWithin = false;
+        disablePanningLater = false;
         disabledPanner.enabled = true;
         hiddenScrollbar.enabled = false;
-    }
-
-    private IEnumerator DisablePanningLater()
-    {
-        while (disabledPanner.panning)
-        {
-            yield return null;
-        }
-
-        if (pointerWithin)
-        {
-            disabledPanner.enabled = false;
-            hiddenScrollbar.enabled = true;
-        }
     }
 }
