@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "UI",
+            "name": "Interface",
             "id": "dc251e8d-509d-4982-bd53-2fb0e2250542",
             "actions": [
                 {

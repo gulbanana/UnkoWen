@@ -15,7 +15,7 @@ public class @Controls : IInputActionCollection, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""UI"",
+            ""name"": ""Interface"",
             ""id"": ""dc251e8d-509d-4982-bd53-2fb0e2250542"",
             ""actions"": [
                 {
@@ -82,11 +82,11 @@ public class @Controls : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // UI
-        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Zoom = m_UI.FindAction("Zoom", throwIfNotFound: true);
-        m_UI_Pan = m_UI.FindAction("Pan", throwIfNotFound: true);
-        m_UI_TriggerPan = m_UI.FindAction("Trigger Pan", throwIfNotFound: true);
+        // Interface
+        m_Interface = asset.FindActionMap("Interface", throwIfNotFound: true);
+        m_Interface_Zoom = m_Interface.FindAction("Zoom", throwIfNotFound: true);
+        m_Interface_Pan = m_Interface.FindAction("Pan", throwIfNotFound: true);
+        m_Interface_TriggerPan = m_Interface.FindAction("Trigger Pan", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -133,39 +133,39 @@ public class @Controls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // UI
-    private readonly InputActionMap m_UI;
-    private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Zoom;
-    private readonly InputAction m_UI_Pan;
-    private readonly InputAction m_UI_TriggerPan;
-    public struct UIActions
+    // Interface
+    private readonly InputActionMap m_Interface;
+    private IInterfaceActions m_InterfaceActionsCallbackInterface;
+    private readonly InputAction m_Interface_Zoom;
+    private readonly InputAction m_Interface_Pan;
+    private readonly InputAction m_Interface_TriggerPan;
+    public struct InterfaceActions
     {
         private @Controls m_Wrapper;
-        public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Zoom => m_Wrapper.m_UI_Zoom;
-        public InputAction @Pan => m_Wrapper.m_UI_Pan;
-        public InputAction @TriggerPan => m_Wrapper.m_UI_TriggerPan;
-        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public InterfaceActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Zoom => m_Wrapper.m_Interface_Zoom;
+        public InputAction @Pan => m_Wrapper.m_Interface_Pan;
+        public InputAction @TriggerPan => m_Wrapper.m_Interface_TriggerPan;
+        public InputActionMap Get() { return m_Wrapper.m_Interface; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
-        public void SetCallbacks(IUIActions instance)
+        public static implicit operator InputActionMap(InterfaceActions set) { return set.Get(); }
+        public void SetCallbacks(IInterfaceActions instance)
         {
-            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            if (m_Wrapper.m_InterfaceActionsCallbackInterface != null)
             {
-                @Zoom.started -= m_Wrapper.m_UIActionsCallbackInterface.OnZoom;
-                @Zoom.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnZoom;
-                @Zoom.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnZoom;
-                @Pan.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPan;
-                @Pan.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPan;
-                @Pan.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPan;
-                @TriggerPan.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTriggerPan;
-                @TriggerPan.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTriggerPan;
-                @TriggerPan.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTriggerPan;
+                @Zoom.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnZoom;
+                @Pan.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnPan;
+                @Pan.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnPan;
+                @Pan.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnPan;
+                @TriggerPan.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnTriggerPan;
+                @TriggerPan.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnTriggerPan;
+                @TriggerPan.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnTriggerPan;
             }
-            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            m_Wrapper.m_InterfaceActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Zoom.started += instance.OnZoom;
@@ -180,8 +180,8 @@ public class @Controls : IInputActionCollection, IDisposable
             }
         }
     }
-    public UIActions @UI => new UIActions(this);
-    public interface IUIActions
+    public InterfaceActions @Interface => new InterfaceActions(this);
+    public interface IInterfaceActions
     {
         void OnZoom(InputAction.CallbackContext context);
         void OnPan(InputAction.CallbackContext context);
