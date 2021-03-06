@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0730c87c820e4c14780837edef9846ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
+  cursor: {fileID: 2800000, guid: 40de5bcef1ce0094b82add2b21dff3ba, type: 3}
   mode: 0
 --- !u!4 &1795646668
 Transform:
