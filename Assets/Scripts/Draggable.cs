@@ -11,6 +11,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // XXX use input action map for better interop with panner?
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
         if (!draggingByEvent)
         {
             if (draggingCamera == null)
@@ -26,6 +29,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
         GrabPointer(eventData.pressEventCamera, eventData.position);
         draggingCamera = null;
         draggingByEvent = true;
@@ -33,11 +38,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
         FollowPointer(eventData.pressEventCamera, eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
         ReleasePointer();
     }
 

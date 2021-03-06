@@ -9,7 +9,7 @@ public class CameraPanner : MonoBehaviour
 
     public Camera controlledCamera;
     private Controls controls;
-    bool panning;
+    internal bool panning;
     Vector2 lastScreenPosition;
 
     public void OnEnable()
