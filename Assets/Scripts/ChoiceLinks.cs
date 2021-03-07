@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,17 +28,17 @@ public class ChoiceLinks : MonoBehaviour, IPointerClickHandler
             mainText.text += $"{texts[linkIndex]}\n\n";
             totalHeight = mainText.GetComponentInParent<RectTransform>().rect.height;
 
-            StartCoroutine(SmoothScroll());
+            SmoothScroll().Forget();
         }
     }
 
-    private IEnumerator SmoothScroll()
+    private async UniTask SmoothScroll()
     {
         scrollView.verticalNormalizedPosition = Mathf.Clamp(scrollView.verticalNormalizedPosition, 0.0001f, 1);
         while (scrollView.verticalNormalizedPosition > 0)
         {
             scrollView.verticalNormalizedPosition -= Time.deltaTime * scrollSpeed / totalHeight;
-            yield return null;
+            await UniTask.NextFrame();
         }
     }
 }
