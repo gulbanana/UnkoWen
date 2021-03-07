@@ -25,6 +25,16 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             {
                 var paragraph = story.Continue();
                 mainText.text += $"{paragraph}\n";
+
+                foreach (var warning in story.currentWarnings)
+                {
+                    Debug.LogWarning(warning);
+                }
+
+                foreach (var error in story.currentErrors)
+                {
+                    Debug.LogError(error);
+                }
             }
             
             if (story.currentChoices.Any())
