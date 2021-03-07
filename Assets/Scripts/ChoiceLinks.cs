@@ -1,31 +1,19 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class ChoiceLinks : MonoBehaviour, IPointerClickHandler
+[RequireComponent(typeof(TextMeshProUGUI))]
+public class ChoiceLinks : MonoBehaviour
 {    
-    public TextMeshProUGUI mainText;
-    public TextMeshProUGUI choiceText;
+    private TextMeshProUGUI choiceText;
     public Camera hoverCam;
     public Color32 baseColor;
     public Color32 hoverColor;
     private int hoverLink = -1;
 
-    private readonly string[] texts =
+    public void Start()
     {
-        "\"Click here,\" I said, willing the player's cursor to my location.",
-        "\"...or here. That would also be an OK place to click.\" I knew the player wouldn't perceive my contempt."
-    };
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        var linkIndex = TMP_TextUtilities.FindIntersectingLink(choiceText, eventData.position, eventData.pressEventCamera);
-        if (linkIndex != -1)
-        {
-            //var link = choiceText.textInfo.linkInfo[linkIndex];
-            mainText.text += $"{texts[linkIndex]}\n\n";
-        }
+        choiceText = GetComponent<TextMeshProUGUI>();
     }
 
     public void LateUpdate()
