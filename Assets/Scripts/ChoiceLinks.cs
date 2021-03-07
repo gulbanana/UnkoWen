@@ -1,16 +1,11 @@
-using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class ChoiceLinks : MonoBehaviour, IPointerClickHandler
 {    
     public TextMeshProUGUI mainText;
     public TextMeshProUGUI choiceText;
-    public ScrollRect scrollView;
-    public float scrollSpeed = 1000f;
-    private float totalHeight;
 
     private readonly string[] texts =
     {
@@ -24,21 +19,7 @@ public class ChoiceLinks : MonoBehaviour, IPointerClickHandler
         if (linkIndex != -1)
         {
             var link = choiceText.textInfo.linkInfo[linkIndex];
-
             mainText.text += $"{texts[linkIndex]}\n\n";
-            totalHeight = mainText.GetComponentInParent<RectTransform>().rect.height;
-
-            SmoothScroll().Forget();
-        }
-    }
-
-    private async UniTask SmoothScroll()
-    {
-        scrollView.verticalNormalizedPosition = Mathf.Clamp(scrollView.verticalNormalizedPosition, 0.0001f, 1);
-        while (scrollView.verticalNormalizedPosition > 0)
-        {
-            scrollView.verticalNormalizedPosition -= Time.deltaTime * scrollSpeed / totalHeight;
-            await UniTask.NextFrame();
         }
     }
 }
