@@ -40,8 +40,8 @@ public class AutoScroll : MonoBehaviour
             }
             else
             {
-
-                var delta = Time.deltaTime / contentHeight * scrollSpeed;
+                var scrollableHeight = contentHeight - scrollRect.viewport.rect.height;
+                var delta = Time.deltaTime * scrollSpeed / scrollableHeight;
                 scrollRect.verticalScrollbar.value -= delta;
             }
         }
