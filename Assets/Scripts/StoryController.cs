@@ -26,12 +26,12 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
                 var paragraph = story.Continue();
                 mainText.text += $"{paragraph}\n";
 
-                foreach (var warning in story.currentWarnings)
+                foreach (var warning in story.currentWarnings ?? Enumerable.Empty<string>())
                 {
                     Debug.LogWarning(warning);
                 }
 
-                foreach (var error in story.currentErrors)
+                foreach (var error in story.currentErrors ?? Enumerable.Empty<string>())
                 {
                     Debug.LogError(error);
                 }
