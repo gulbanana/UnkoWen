@@ -603,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3528297060541518210, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_Name
-      value: PhotoFrame3
+      value: Dog 3 - Col. Russet
       objectReference: {fileID: 0}
     - target: {fileID: 3646238516887722297, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_Sprite
@@ -615,11 +615,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.54
+      value: -7.19
       objectReference: {fileID: 0}
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.56
+      value: -1.69
       objectReference: {fileID: 0}
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -652,6 +652,10 @@ PrefabInstance:
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688730078071697348, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
+      propertyPath: m_text
+      value: Col. RUSSET
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
@@ -1069,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 80f61ff6b6dd27246b1408915360144f, type: 3}
     - target: {fileID: 3064995161178340737, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_Name
-      value: PhotoFrame4
+      value: Dog 4 - Jamison Blue
       objectReference: {fileID: 0}
     - target: {fileID: 4095500503347081483, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalScale.x
@@ -1097,11 +1101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.94
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1134,6 +1138,10 @@ PrefabInstance:
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127679093805777863, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
+      propertyPath: m_text
+      value: Jamison BLUE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
@@ -1512,17 +1520,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1784601385}
     m_Modifications:
+    - target: {fileID: 1658628451926420249, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
+      propertyPath: m_text
+      value: Dr. BROWN
+      objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.43
+      value: -7.96
       objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.15
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1578,7 +1590,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 0bef5a11f65656a42b69b93dcfebbdae, type: 3}
     - target: {fileID: 6874524143085737311, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_Name
-      value: Dog 1
+      value: Dog 1 - Dr. Brown
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
@@ -1832,23 +1844,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046656252360598368, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_Name
-      value: Dog 2
+      value: Dog 2 - Mme. Goldsmith
       objectReference: {fileID: 0}
     - target: {fileID: 2164580932572965851, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f8262775faa6f3a449df300a07789e3e, type: 3}
+    - target: {fileID: 6054167791053823270, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
+      propertyPath: m_text
+      value: Mme. GOLDSMITH
+      objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.66
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.1
+      value: 3.14
       objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_LocalPosition.z
