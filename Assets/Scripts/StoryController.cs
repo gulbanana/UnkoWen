@@ -26,6 +26,11 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
                 var paragraph = story.Continue();
                 mainText.text += $"{paragraph}\n";
 
+                foreach (var tag in story.currentTags)
+                {
+                    ProcessTag(tag);
+                }
+
                 foreach (var warning in story.currentWarnings ?? Enumerable.Empty<string>())
                 {
                     Debug.LogWarning(warning);
@@ -43,6 +48,20 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
                 choiceText.enabled = true;
             }
         }
+    }
+
+    void ProcessTag(string tag)
+    {
+        switch (tag.Split(' '))
+        {
+            case ("disable", var name):
+                GameObject.Find(name)?.SetActive(false);
+                break;
+
+            case ("enable", var name):
+                Resources.FindObjectsOfTypeAll<GameObject>().SingleOrDefault(go => go.name == name)?.SetActive(true);
+                break;
+        };        
     }
 
     public void OnPointerClick(PointerEventData eventData)

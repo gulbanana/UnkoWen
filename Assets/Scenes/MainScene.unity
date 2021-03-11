@@ -603,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3528297060541518210, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_Name
-      value: Dog 3 - Col. Russet
+      value: russet
       objectReference: {fileID: 0}
     - target: {fileID: 3646238516887722297, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_Sprite
@@ -615,11 +615,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.19
+      value: -7.3
       objectReference: {fileID: 0}
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.69
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: 5628920999885505861, guid: 3e366434b86f6fb47aa8e10092b66a27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -736,8 +736,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281348144
-  m_fontColor: {r: 0.1882353, g: 0.1882353, b: 0.1882353, a: 1}
+    rgba: 4282927176
+  m_fontColor: {r: 0.28235295, g: 0.28235295, b: 0.28235295, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -959,7 +959,7 @@ MonoBehaviour:
     rgba: 4278190080
   hoverColor:
     serializedVersion: 2
-    rgba: 4281348144
+    rgba: 4282927176
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 80f61ff6b6dd27246b1408915360144f, type: 3}
     - target: {fileID: 3064995161178340737, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_Name
-      value: Dog 4 - Jamison Blue
+      value: blue
       objectReference: {fileID: 0}
     - target: {fileID: 4095500503347081483, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalScale.x
@@ -1101,11 +1101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.25
+      value: -1.87
       objectReference: {fileID: 0}
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.82
+      value: -1.85
       objectReference: {fileID: 0}
     - target: {fileID: 6080979301444561222, guid: 36dc44e470e614744aa014f45dd8e418, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 1784601385}
   - component: {fileID: 1784601384}
   m_Layer: 0
-  m_Name: Foreground
+  m_Name: Entities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,6 +1520,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1784601385}
     m_Modifications:
+    - target: {fileID: 1125847898696752558, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1658628451926420249, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_text
       value: Dr. BROWN
@@ -1530,11 +1534,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.96
+      value: -6.49
       objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.06
+      value: 3.09
       objectReference: {fileID: 0}
     - target: {fileID: 2417801751059005848, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1568,6 +1572,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5351907796600920360, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5564232074749286869, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
@@ -1588,9 +1596,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0bef5a11f65656a42b69b93dcfebbdae, type: 3}
+    - target: {fileID: 6704235515814190564, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6874524143085737311, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
       propertyPath: m_Name
-      value: Dog 1 - Dr. Brown
+      value: brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874524143085737311, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd780642964a6d4fa23eb36a36a95ec, type: 3}
@@ -1844,7 +1860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046656252360598368, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_Name
-      value: Dog 2 - Mme. Goldsmith
+      value: gold
       objectReference: {fileID: 0}
     - target: {fileID: 2164580932572965851, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_Sprite
@@ -1860,11 +1876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.32
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.14
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 7101571522103441319, guid: 5b7415b90f28bf1429e408b37b14c433, type: 3}
       propertyPath: m_LocalPosition.z

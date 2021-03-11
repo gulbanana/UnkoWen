@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2417801751059005848}
   - component: {fileID: 1125847898696752558}
   - component: {fileID: 5351907796600920360}
-  - component: {fileID: -4954677762233978728}
+  - component: {fileID: 6516742187647716298}
   m_Layer: 0
   m_Name: PhotoFrame
   m_TagString: Untagged
@@ -410,7 +410,7 @@ PolygonCollider2D:
       - {x: -1.8180348, y: 2.1935287}
       - {x: -1.2493985, y: -1.8790998}
       - {x: 2.170547, y: -1.4087124}
---- !u!114 &-4954677762233978728
+--- !u!114 &6516742187647716298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,9 +419,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6874524143085737311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 353ee96fa584d4d46ad06b2aa1098554, type: 3}
+  m_Script: {fileID: 11500000, guid: a88c9637c430f5c44979ce94ae13e7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverColor: {r: 1, g: 0.9882353, b: 0.7764706, a: 1}
 --- !u!1 &7685986260390973667
 GameObject:
   m_ObjectHideFlags: 0
