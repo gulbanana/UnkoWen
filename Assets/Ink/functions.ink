@@ -47,3 +47,11 @@
             }
         }
 }
+
+=== function plural(x, n, s) ===
+{
+    - x == 1:
+        {n}
+    - else:
+        {s}
+}

@@ -1,26 +1,31 @@
 INCLUDE functions.ink
+VAR dogs = 0
 
-#disable brown
-#disable gold
-#disable russet
-#disable blue
 Once upon a time...
-    -> dogs
+    -> list_dogs
     
-== another_dog
--> dogs
+// looks like we don't count knots without this
+=== add_dog ===
+-> list_dogs
 
-== dogs
-There {dogs!=4: were}{dogs==4: was} {print_num(5-dogs)} {dogs!=4:dogs}{dogs==4:dog}.
-* (brown) [Doctor Brown{gold and russet and blue:.}] -> another_dog #enable brown
-* (gold) [{russet and blue and not brown: and }Madame Goldsmith{russet and blue:.}] -> another_dog #enable gold
-* (russet) [{blue and not (brown and gold): and }Colonel Russet{blue:.}] -> another_dog #enable russet
-* (blue) [{not (brown and gold and russet): and }Jamison Blue.] -> another_dog #enable blue
-* -> 
+=== list_dogs ===
+~ dogs = 4 - add_dog
+
+There {plural(dogs, "was", "were")} {print_num(dogs)} {plural(dogs, "dog", "dogs")}.
+
+* (brown) [Doctor Brown{gold and red and blue:.}] -> add_dog #enable brown
+* (gold) [{red and blue and not brown: and }Madame Goldsmith{red and blue:.}] -> add_dog #enable gold
+* (red) [{blue and not (brown and gold): and }Colonel Russet{blue:.}] -> add_dog #enable red
+* (blue) [{not (brown and gold and red): and }Jamison Blue.] -> add_dog #enable blue
+* -> pet_dog
  
-- But the story continued.
+=== pet_dog ===
+Which of these dogs would be clicked? #hide-choices
 
-* This time, there were no dogs.
+* [click.brown] A good brown boy. 
+* [click.gold] A boy as good as gold.
+* [click.red] A red good boy.
+* [click.blue] A blue boy and a good boy.
 
 - They lived happily ever after.
     -> END

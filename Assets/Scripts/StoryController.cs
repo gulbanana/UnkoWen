@@ -6,10 +6,12 @@ using UnityEngine.EventSystems;
 
 public class StoryController : MonoBehaviour, IPointerClickHandler
 {
+    public EntityController entities;
     public TextAsset json;
     public TextMeshProUGUI mainText;
     public TextMeshProUGUI choiceText;
     private Story story;
+    private bool hideNextChoices;
 
     void Start()
     {
@@ -44,24 +46,33 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             
             if (story.currentChoices.Any())
             {
-                choiceText.text = string.Join(string.Empty, story.currentChoices.Select((c, idx) => $"<link=\"{idx}\">{c.text}</link>\n"));
-                choiceText.enabled = true;
+                if (hideNextChoices)
+                {
+                    hideNextChoices = false;
+                }
+                else
+                {
+                    choiceText.text = string.Join(string.Empty, story.currentChoices.Select((c, idx) => $"<link=\"{idx}\">{c.text}</link>\n"));
+                    choiceText.enabled = true;
+                }
             }
         }
     }
 
     void ProcessTag(string tag)
     {
-        switch (tag.Split(' '))
+        var result = tag.Split(' ') switch
         {
-            case ("disable", var name):
-                GameObject.Find(name)?.SetActive(false);
-                break;
+            ("disable", var name) => entities.Disable(name),
+            ("enable", var name) => entities.Enable(name),
+            ("hide-choices", _) => hideNextChoices = true,
+            _ => false
+        };
 
-            case ("enable", var name):
-                Resources.FindObjectsOfTypeAll<GameObject>().SingleOrDefault(go => go.name == name)?.SetActive(true);
-                break;
-        };        
+        if (!result)
+        {
+            Debug.LogError($"Failed to process tag {tag}");
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -79,6 +90,19 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             {
                 Debug.LogError($"unknown link id {link.GetLinkID()}");
             }
+        }
+    }
+
+    public void Choose(string text)
+    {
+        var c = story.currentChoices.SingleOrDefault(c => c.text == text);
+        if (c == null)
+        {
+            Debug.LogError($"failed to find choice {text}");
+        }
+        else
+        {
+            story.ChooseChoiceIndex(c.index);
         }
     }
 }
