@@ -3,14 +3,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 [ExecuteAlways]
-public class CircleDrawing : MonoBehaviour
+public class OvalDrawing : MonoBehaviour
 {
-    public int resolution = 10;
-    public float radius = 2f;
+    public int samplesPerArc = 10;
+    public float width = 2f;
+    public float height = 2f;
 
     private void OnValidate()
     {
-        var geometry = DrawCircle();
+        var geometry = DrawOval();
 
         var renderer = GetComponent<LineRenderer>();
         renderer.positionCount = geometry.Length;
@@ -20,34 +21,38 @@ public class CircleDrawing : MonoBehaviour
         }
     }
     
-    private Vector2[] DrawCircle()
+    private Vector2[] DrawOval()
     {
         // (4/3)*tan(pi/(2n)), where n = the number of control points in an arc - currently 4
-        var magicNumber = radius * 0.552284749831f;
+        var magicNumber = 0.552284749831f;
+        var rx = width / 2;
+        var cx = rx * magicNumber;
+        var ry = height / 2;
+        var cy = ry * magicNumber;
 
-        var curveSW = Bezier(resolution,
-            new Vector2(-radius, 0),
-            new Vector2(-radius, -magicNumber),
-            new Vector2(-magicNumber, -radius),
-            new Vector2(0, -radius));
+        var curveSW = Bezier(samplesPerArc,
+            new Vector2(-rx, 0),
+            new Vector2(-rx, -cy),
+            new Vector2(-cx, -ry),
+            new Vector2(0, -ry));
 
-        var curveSE = Bezier(resolution,
-            new Vector2(0, -radius),
-            new Vector2(magicNumber, -radius),
-            new Vector2(radius, -magicNumber),
-            new Vector2(radius, 0));
+        var curveSE = Bezier(samplesPerArc,
+            new Vector2(0, -ry),
+            new Vector2(cx, -ry),
+            new Vector2(rx, -cy),
+            new Vector2(rx, 0));
 
-        var curveNE = Bezier(resolution,
-            new Vector2(radius, 0),
-            new Vector2(radius, magicNumber),
-            new Vector2(magicNumber, radius),
-            new Vector2(0, radius));
+        var curveNE = Bezier(samplesPerArc,
+            new Vector2(rx, 0),
+            new Vector2(rx, cy),
+            new Vector2(cx, ry),
+            new Vector2(0, ry));
 
-        var curveNW = Bezier(resolution,
-            new Vector2(0, radius),
-            new Vector2(-magicNumber, radius),
-            new Vector2(-radius, magicNumber),
-            new Vector2(-radius, 0));
+        var curveNW = Bezier(samplesPerArc,
+            new Vector2(0, ry),
+            new Vector2(-cx, ry),
+            new Vector2(-rx, cy),
+            new Vector2(-rx, 0));
 
         return curveSW.Concat(curveSE).Concat(curveNE).Concat(curveNW).ToArray();
     }
