@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ExclusiveControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public CameraPanner disabledPanner;
+    public CameraController disabledController;
     public Image hiddenScrollbar;
     private bool disablePanningLater;
 
@@ -15,23 +15,23 @@ public class ExclusiveControl : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void Update()
     {
-        if (disablePanningLater && !disabledPanner.panning)
+        if (disablePanningLater && !disabledController.panning)
         {
             disablePanningLater = false;
-            disabledPanner.enabled = false;
+            disabledController.enabled = false;
             hiddenScrollbar.enabled = true;
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (disabledPanner.panning)
+        if (disabledController.panning)
         {
             disablePanningLater = true;
         }
         else
         {
-            disabledPanner.enabled = false;
+            disabledController.enabled = false;
             hiddenScrollbar.enabled = true;
         }
     }
@@ -39,7 +39,7 @@ public class ExclusiveControl : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerExit(PointerEventData eventData)
     {
         disablePanningLater = false;
-        disabledPanner.enabled = true;
+        disabledController.enabled = true;
         hiddenScrollbar.enabled = false;
     }
 }

@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraPanner : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public float zoomSpeed = .002f;
-    public float maxPanX = 3f;
-    public float maxPanY = 2f;
+    public float minZoom = 2f;
+    public float maxZoom = 6f;
+    private Rect maxPan;
 
     public Camera controlledCamera;
     private Controls controls;
@@ -31,10 +32,23 @@ public class CameraPanner : MonoBehaviour
         controls.Disable();
     }
 
+    public void Start()
+    {
+        controlledCamera.orthographicSize = maxZoom;
+        var origin = controlledCamera.ViewportToWorldPoint(Vector2.zero);
+        var extent = controlledCamera.ViewportToWorldPoint(Vector2.one);
+        maxPan = new Rect(origin, extent);
+    }
+
     private void OnZoom(InputAction.CallbackContext context)
     {
         var value = context.ReadValue<Vector2>();
-        controlledCamera.orthographicSize = Mathf.Clamp(controlledCamera.orthographicSize - value.y * zoomSpeed, 2f, 6f);
+        controlledCamera.orthographicSize = Mathf.Clamp(controlledCamera.orthographicSize - value.y * zoomSpeed, minZoom, maxZoom);
+
+        if (value.magnitude > 0)
+        {
+            ClampCamera(controlledCamera.transform.position);
+        }
     }
 
     private void OnBeginPan(InputAction.CallbackContext context)
@@ -59,10 +73,19 @@ public class CameraPanner : MonoBehaviour
             var worldDelta = lastWorldPosition - worldPosition;
 
             var newPosition = controlledCamera.transform.position + worldDelta;
-            
-            controlledCamera.transform.position = new Vector3(Mathf.Clamp(newPosition.x, -maxPanX, maxPanX), Mathf.Clamp(newPosition.y, -maxPanY, maxPanY), controlledCamera.transform.position.z);
+
+            ClampCamera(newPosition);
         }
 
         lastScreenPosition = screenPosition;
+    }
+
+    private void ClampCamera(Vector3 desiredPosition)
+    {
+        var zoomFactor = maxZoom / controlledCamera.orthographicSize;
+        var halfWidth = (maxPan.width - (maxPan.width / zoomFactor));
+        var halfHeight = (maxPan.height - (maxPan.height / zoomFactor));
+
+        controlledCamera.transform.position = new Vector3(Mathf.Clamp(desiredPosition.x, -halfWidth, halfWidth), Mathf.Clamp(desiredPosition.y, -halfHeight, halfHeight), controlledCamera.transform.position.z);
     }
 }
