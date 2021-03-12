@@ -32,6 +32,7 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
                 {
                     ProcessTag(tag);
                 }
+                entities.DisableInteraction();
 
                 foreach (var warning in story.currentWarnings ?? Enumerable.Empty<string>())
                 {
@@ -48,6 +49,7 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             {
                 if (hideNextChoices)
                 {
+                    entities.EnableInteraction();
                     hideNextChoices = false;
                 }
                 else
@@ -63,8 +65,8 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
     {
         var result = tag.Split(' ') switch
         {
-            ("disable", var name) => entities.Disable(name),
-            ("enable", var name) => entities.Enable(name),
+            ("disable", var name) => entities.Deactivate(name),
+            ("enable", var name) => entities.Activate(name),
             ("hide-choices", _) => hideNextChoices = true,
             _ => false
         };

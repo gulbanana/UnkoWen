@@ -14,7 +14,11 @@ public class Clickable : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     public void OnPointerExit(PointerEventData _) => Unhover();
 
-    public void OnPointerClick(PointerEventData _) => Clicked?.Invoke();
+    public void OnPointerClick(PointerEventData _)
+    {
+        Clicked?.Invoke();
+        Unhover();
+    }
 
     private void Hover()
     {

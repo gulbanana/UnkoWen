@@ -10,20 +10,22 @@ public class EntityController : MonoBehaviour
 
     private void Start()
     {
-        foreach (var entity in entities)
+        if (!doneFirstStart)
         {
-            if (!doneFirstStart && entity.GetComponent<Clickable>() is Clickable c)
+            foreach (var c in GetComponentsInChildren<Clickable>())
             {
                 c.Clicked += () => story.Choose("click." + c.gameObject.name);
             }
-
-            entity.SetActive(false);
+            doneFirstStart = true;
         }
 
-        doneFirstStart = true;
+        foreach (var entity in entities)
+        {
+            entity.SetActive(false);
+        }
     }
 
-    public bool Enable(string name)
+    public bool Activate(string name)
     {
         if (entities.SingleOrDefault(go => go.name == name) is GameObject go)
         {
@@ -36,7 +38,7 @@ public class EntityController : MonoBehaviour
         }
     }
 
-    public bool Disable(string name)
+    public bool Deactivate(string name)
     {
         if (entities.SingleOrDefault(go => go.name == name) is GameObject go)
         {
@@ -46,6 +48,22 @@ public class EntityController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void DisableInteraction()
+    {
+        foreach (var c in GetComponentsInChildren<Clickable>())
+        {
+            c.enabled = false;
+        }
+    }
+
+    public void EnableInteraction()
+    {
+        foreach (var c in GetComponentsInChildren<Clickable>())
+        {
+            c.enabled = true;
         }
     }
 }
