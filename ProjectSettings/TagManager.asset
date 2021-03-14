@@ -47,3 +47,6 @@ TagManager:
   - name: Drawings
     uniqueID: 1355870873
     locked: 0
+  - name: Pins
+    uniqueID: 1710620143
+    locked: 0
