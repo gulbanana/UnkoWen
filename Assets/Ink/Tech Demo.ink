@@ -13,7 +13,7 @@ Once upon a time...
 
 There {plural(dogs, "was", "were")} {print_num(dogs)} {plural(dogs, "dog", "dogs")}.
 
-* (brown) [Doctor Brown{gold and red and blue:.}] -> add_dog #enable brown
+* (brown) [Doctor Brown{gold and red and blue:.}] -> add_dog #enable brown #enable brown.alibi
 * (gold) [{red and blue and not brown: and }Madame Goldsmith{red and blue:.}] -> add_dog #enable gold
 * (red) [{blue and not (brown and gold): and }Colonel Russet{blue:.}] -> add_dog #enable red
 * (blue) [{not (brown and gold and red): and }Jamison Blue.] -> add_dog #enable blue

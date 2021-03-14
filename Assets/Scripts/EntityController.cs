@@ -5,8 +5,13 @@ using UnityEngine;
 public class EntityController : MonoBehaviour
 {
     public StoryController story;
-    public List<GameObject> entities;
+    private List<GameObject> entities;
     private bool doneFirstStart;
+
+    private void Awake()
+    {
+        entities = transform.Cast<Transform>().Select(t => t.gameObject).ToList();
+    }
 
     private void Start()
     {
