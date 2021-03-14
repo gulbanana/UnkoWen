@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -21,7 +22,8 @@ public class OutlineDrawing : MonoBehaviour
         if (textMesh)
         {
             textMesh.text = text;
-            textMesh.rectTransform.sizeDelta = new Vector2(textMesh.preferredWidth, textMesh.preferredHeight);
+            var y = text.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).Length * 0.5f;
+            textMesh.rectTransform.sizeDelta = new Vector2(textMesh.preferredWidth, y /* textMesh.preferredHeight */);
 
             if (spriteShape && spriteShape.spline.GetPointCount() == 8)
             {
