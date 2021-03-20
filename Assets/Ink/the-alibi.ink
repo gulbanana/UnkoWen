@@ -1,4 +1,4 @@
-<align="center"><size="48">The Alibi</size></align>
+The Alibi #format title
 
 A man is dead, and I know who did it. But I have no proof. #enable brown
 
@@ -37,14 +37,25 @@ He's dead, Jim.
     ->->
     
 == interview_red ==
-"I didn't do it." 
-    ->->
+#format begin-interview
+Subject: Rupert RUSSET #format title
+"I didn't do it."
++ "Ok."
+#format end-interview
+- ->->
     
 == interview_gold ==
+#format begin-interview
+Subject: Gloria GOLDSMITH #format title
 "Actually, he did it." #rename red.alibi No alibi
-    ->->
++ "Oh."
+#format end-interview
+- ->->
     
 == accuse_red ==
+#format begin-interview
+Subject: Rupert RUSSET #format title
 "Actually, I did it."
+#format end-interview
 \~fin
     -> END

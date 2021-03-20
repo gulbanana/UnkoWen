@@ -9598,6 +9598,8 @@ MonoBehaviour:
   json: {fileID: 4900000, guid: 92e82f730256a844a9b3edfe9fa9116c, type: 3}
   mainText: {fileID: 454596818}
   choiceText: {fileID: 458244290}
+  mainFont: {fileID: 11400000, guid: e6b03ef798f6b62419b02dfe124b5e6f, type: 2}
+  interviewFont: {fileID: 11400000, guid: 8865f83b8d631964cacab17290899794, type: 2}
 --- !u!1 &2022995898
 GameObject:
   m_ObjectHideFlags: 0

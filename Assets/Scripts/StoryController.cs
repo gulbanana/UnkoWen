@@ -1,5 +1,6 @@
 using Ink.Runtime;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,10 +9,15 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
 {
     public PlotController entities;
     public TextAsset json;
-    public TextMeshProUGUI mainText;
-    public TextMeshProUGUI choiceText;
+    public TMP_Text mainText;
+    public TMP_Text choiceText;
+    public TMP_FontAsset mainFont;
+    public TMP_FontAsset interviewFont;
     private Story story;
     private bool hideNextChoices;
+    private bool inTitle;
+    private bool inInterview;
+    private bool endingInterview;
 
     void Start()
     {
@@ -25,15 +31,16 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
         {
             while (story.canContinue)
             {
-                var paragraph = story.Continue();
-                mainText.text += $"{paragraph}\n";
-                Debug.Log($"paragraph: {paragraph}");
-                Debug.Log($"tags: {story.currentTags.Count}");
+                entities.DisableInteraction();
+
+                var paragraph = story.Continue();                
+                
                 foreach (var tag in story.currentTags)
                 {
                     ProcessTag(tag);
                 }
-                entities.DisableInteraction();
+
+                mainText.text += Format(paragraph);
 
                 foreach (var warning in story.currentWarnings ?? Enumerable.Empty<string>())
                 {
@@ -70,6 +77,9 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             ("enable", string name) => entities.Activate(name),
             ("rename", string[](string name, string[] label)) => entities.Rename(name, string.Join(" ", label)),
             ("plot-choices", _) => hideNextChoices = true,
+            ("format", "title") => inTitle = true,
+            ("format", "begin-interview") => BeginInterview(),
+            ("format", "end-interview") => EndInterview(),
             _ => false
         };
 
@@ -77,6 +87,69 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogError($"Failed to process tag {tag}");
         }
+    }
+
+    bool BeginInterview()
+    {
+        inInterview = true;
+        choiceText.font = interviewFont;
+        return true;
+    }
+
+    bool EndInterview()
+    {
+        inInterview = false;
+        endingInterview = true;
+        choiceText.font = mainFont;
+        return true;
+    }
+
+    string Format(string paragraph)
+    {
+        var builder = new StringBuilder();
+
+        if (endingInterview)
+        {
+            builder.AppendLine();
+            endingInterview = false;
+        }
+
+        if (inInterview)
+        {
+            builder.Append($"<font={interviewFont.name}>");
+        }
+
+        if (inTitle)
+        {
+            builder.Append("<align=center>");
+            if (!inInterview)
+            {
+                builder.Append("<size=48>");
+            }
+        }
+
+        builder.Append(paragraph);
+        
+        if (inTitle)
+        {
+            if (!inInterview)
+            {
+                builder.Append("</size>");
+            }
+            builder.Append("</align>");
+            inTitle = false;
+        }
+
+        if (inInterview)
+        {
+            builder.Append("</font>");
+        }
+        else
+        {
+            builder.AppendLine();
+        }
+
+        return builder.ToString();
     }
 
     public void OnPointerClick(PointerEventData eventData)
