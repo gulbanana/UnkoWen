@@ -1,8 +1,21 @@
-﻿public static class PatternExtensions
+﻿using System.Linq;
+
+public static class PatternExtensions
 {
-    public static void Deconstruct(this string[] array, out string e0, out string e1)
+    public static void Deconstruct(this string[] array, out string head, out object tail)
     {
-        e0 = array.Length > 0 ? array[0] : null;
-        e1 = array.Length > 1 ? array[1] : null;
+        head = array.Length > 0 ? array[0] : null;
+        if (array.Length < 2)
+        {
+            tail = null;
+        } 
+        else if (array.Length == 2)
+        {
+            tail = array[1];
+        }
+        else
+        {
+            tail = array.Skip(1).ToArray();
+        }
     }
 }

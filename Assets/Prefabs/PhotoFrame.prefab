@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 1125847898696752558}
   - component: {fileID: 5351907796600920360}
   - component: {fileID: 6516742187647716298}
+  - component: {fileID: -6922687484605581141}
   m_Layer: 0
   m_Name: PhotoFrame
   m_TagString: Untagged
@@ -423,6 +424,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 1, g: 0.9882353, b: 0.7764706, a: 1}
+--- !u!114 &-6922687484605581141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874524143085737311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc01b4f445fbe34389dd636c39139c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 1658628451926420249}
 --- !u!1 &7685986260390973667
 GameObject:
   m_ObjectHideFlags: 0

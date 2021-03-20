@@ -1,8 +1,8 @@
 <align="center"><size="48">The Alibi</size></align>
 
-A man is dead, and I know who did it. But I have no proof.
+A man is dead, and I know who did it. But I have no proof. #enable brown
 
-+ Doctor Bigeyes Brown[.]<> #enable brown
++ Doctor Bigeyes Brown[.]<> #rename brown Dr. BROWN
 
 - was shot at 4 PM. The killing hour. They say he was a good boy - who isn't, these days? 
 
@@ -30,5 +30,6 @@ My only chance now is to talk to people and ask them questions. {But who?|Who el
 + [click.gold] -> interview
 
 == interview ==
+"Actually, he did it." #rename red.alibi No alibi
 \~fin
     -> END

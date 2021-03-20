@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class StoryController : MonoBehaviour, IPointerClickHandler
 {
-    public EntityController entities;
+    public PlotController entities;
     public TextAsset json;
     public TextMeshProUGUI mainText;
     public TextMeshProUGUI choiceText;
@@ -66,8 +66,9 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
     {
         var result = tag.Split(' ') switch
         {
-            ("disable", var name) => entities.Deactivate(name),
-            ("enable", var name) => entities.Activate(name),
+            ("disable", string name) => entities.Deactivate(name),
+            ("enable", string name) => entities.Activate(name),
+            ("rename", string[](string name, string[] label)) => entities.Rename(name, string.Join(" ", label)),
             ("hide-choices", _) => hideNextChoices = true,
             _ => false
         };
