@@ -27,7 +27,8 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             {
                 var paragraph = story.Continue();
                 mainText.text += $"{paragraph}\n";
-
+                Debug.Log($"paragraph: {paragraph}");
+                Debug.Log($"tags: {story.currentTags.Count}");
                 foreach (var tag in story.currentTags)
                 {
                     ProcessTag(tag);
