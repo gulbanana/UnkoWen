@@ -69,7 +69,7 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             ("disable", string name) => entities.Deactivate(name),
             ("enable", string name) => entities.Activate(name),
             ("rename", string[](string name, string[] label)) => entities.Rename(name, string.Join(" ", label)),
-            ("hide-choices", _) => hideNextChoices = true,
+            ("plot-choices", _) => hideNextChoices = true,
             _ => false
         };
 
