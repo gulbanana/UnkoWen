@@ -70,8 +70,26 @@ public class PlotController : MonoBehaviour
         e.gameObject.SetActive(true);
     });
 
-    public bool Rename(string name, string label) => WithEntity(name, e =>
+    public bool SetName(string name, string label) => WithEntity(name, e =>
     {
         e.label.text = label;
+    });
+
+    public bool SetImage(string name, string asset) => WithEntity(name, e =>
+    {
+        if (e.art == null)
+        {
+            Debug.LogWarning($"entity {name} has no art");
+            return;
+        }
+
+        var texture = Resources.Load<Sprite>(asset);
+        if (texture == null)
+        {
+            Debug.LogWarning($"resource {asset} not found");
+            return;
+        }
+
+        e.art.sprite = texture;
     });
 }

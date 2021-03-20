@@ -2,7 +2,7 @@ The Alibi #format title
 
 A man is dead, and I know who did it. But I have no proof. #enable brown
 
-+ Doctor Bigeyes Brown[.]<> #rename brown Dr. BROWN
++ Doctor Bigeyes Brown[.]<> #label brown Dr. BROWN #art brown dogs/brown-greyscale
 
 - was shot at 4 PM. The killing hour. They say he was a good boy - who isn't, these days? 
 
@@ -47,7 +47,7 @@ Subject: Rupert RUSSET #format title
 == interview_gold ==
 #format begin-interview
 Subject: Gloria GOLDSMITH #format title
-"Actually, he did it." #rename red.alibi No alibi
+"Actually, he did it." #label red.alibi No alibi
 + "Oh."
 #format end-interview
 - ->->

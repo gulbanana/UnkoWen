@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: {fileID: 1658628451926420249}
+  art: {fileID: 6704235515814190564}
 --- !u!1 &7685986260390973667
 GameObject:
   m_ObjectHideFlags: 0

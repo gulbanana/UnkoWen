@@ -75,7 +75,8 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
         {
             ("disable", string name) => entities.Deactivate(name),
             ("enable", string name) => entities.Activate(name),
-            ("rename", string[](string name, string[] label)) => entities.Rename(name, string.Join(" ", label)),
+            ("label", string[](string name, string[] label)) => entities.SetName(name, string.Join(" ", label)),
+            ("art", string[](string name, string asset)) => entities.SetImage(name, asset),
             ("plot-choices", _) => hideNextChoices = true,
             ("format", "title") => inTitle = true,
             ("format", "begin-interview") => BeginInterview(),
