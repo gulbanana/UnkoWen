@@ -5935,8 +5935,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282927176
-  m_fontColor: {r: 0.28235295, g: 0.28235295, b: 0.28235295, a: 1}
+    rgba: 4278985740
+  m_fontColor: {r: 0.047058824, g: 0.14117648, b: 0.047058824, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6072,8 +6072,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4287630348
+  m_fontColor: {r: 0.047058824, g: 0.047058824, b: 0.5647059, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6155,10 +6155,10 @@ MonoBehaviour:
   hoverCam: {fileID: 519420031}
   baseColor:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4287630348
   hoverColor:
     serializedVersion: 2
-    rgba: 4282927176
+    rgba: 4279013388
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
