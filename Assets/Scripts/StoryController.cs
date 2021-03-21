@@ -13,6 +13,7 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
     public TMP_Text choiceText;
     public TMP_FontAsset mainFont;
     public TMP_FontAsset interviewFont;
+    public float titleSize;
     private Story story;
     private bool hideNextChoices;
     private bool inTitle;
@@ -125,7 +126,7 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             builder.Append("<align=center>");
             if (!inInterview)
             {
-                builder.Append("<size=48>");
+                builder.Append($"<size={titleSize}>");
             }
         }
 
