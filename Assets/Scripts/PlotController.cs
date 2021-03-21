@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlotController : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class PlotController : MonoBehaviour
         {
             foreach (var c in GetComponentsInChildren<Clickable>())
             {
-                c.Clicked += () => story.Choose("click." + c.gameObject.name);
+                c.Clicked += () =>
+                {
+                    ExecuteEvents.ExecuteHierarchy<IAudioHandler>(gameObject, null, (r, _) => r.ChooseEntity());
+                    story.Choose("click." + c.gameObject.name);
+                };
             }
             doneFirstStart = true;
         }

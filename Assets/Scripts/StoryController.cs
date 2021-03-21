@@ -162,6 +162,7 @@ public class StoryController : MonoBehaviour, IPointerClickHandler
             var link = choiceText.textInfo.linkInfo[linkIndex];
             if (int.TryParse(link.GetLinkID(), out var linkID))
             {
+                ExecuteEvents.ExecuteHierarchy<IAudioHandler>(gameObject, null, (r, _) => r.ChooseLink());
                 story.ChooseChoiceIndex(linkID);
                 choiceText.enabled = false;
             }
